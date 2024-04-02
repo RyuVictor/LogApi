@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LogApi.Models;
-using LogApi.DataAccess;
+using LogApi.DataAccess.Exceptions;
 using System.Net;
 
 namespace LogApi.Controllers
@@ -29,7 +29,6 @@ namespace LogApi.Controllers
         public IActionResult GetAllExceptions()
         {
             var exceptions = _dataHandler.GetAllExceptions();
-            //GetClientIP();
             return Ok(exceptions);
         }
 
@@ -71,16 +70,5 @@ namespace LogApi.Controllers
             var exceptions = _dataHandler.GetRecentExceptions();
             return Ok(exceptions);
         }
-        //[HttpGet("GetIp")]
-        //public IActionResult GetClientIP()
-        //{
-        //    var ipAddress = HttpContext.Connection.RemoteIpAddress;
-        //    if (HttpContext.Request.Headers.ContainsKey("X-Forwarded-For"))
-        //    {
-        //        ipAddress = IPAddress.Parse(HttpContext.Request.Headers["X-Forwarded-For"].First());
-        //    }
-        //    Console.WriteLine($"Client IP Address: {ipAddress}");
-        //    return Ok($"Client IP Address: {ipAddress}"); 
-        //}
     }
 }

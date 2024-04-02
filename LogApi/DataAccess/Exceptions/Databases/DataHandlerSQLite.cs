@@ -1,8 +1,9 @@
 ﻿using LogApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SQLite;
 
-namespace LogApi.DataAccess
+namespace LogApi.DataAccess.Exceptions.Databases
 {
     public class DataHandlerSQLite : IDataHandler
     {
@@ -283,6 +284,5 @@ namespace LogApi.DataAccess
             List<MyException> recentExceptions = exceptions.OrderBy(e => e.Timestamp).Take(10).ToList();
             return recentExceptions;
         }
-
     }
 }

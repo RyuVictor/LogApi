@@ -1,4 +1,5 @@
-using LogApi.DataAccess;
+using LogApi.DataAccess.Exceptions.Databases;
+using LogApi.DataAccess.Users;
 using Microsoft.Extensions.Configuration;
 
 
@@ -13,35 +14,15 @@ builder.Services.AddSwaggerGen();
 
 // Register DataHandlerSsms class with connection string
 var appBaseDirectory = AppContext.BaseDirectory;
-builder.Services.AddSingleton<DataHandlerSsms>(provider =>
-{
-    var configuration = provider.GetRequiredService<IConfiguration>();
-    var connectionString = configuration.GetConnectionString("SsmsConnection");
-    return new DataHandlerSsms(connectionString);
-});
-builder.Services.AddSingleton<FileExceptionHandler>(provider =>
-{
-    var logDirectory = Path.Combine(appBaseDirectory, "Logs");
-    Directory.CreateDirectory(logDirectory); // Ensure the directory exists
-    var logFilePath = Path.Combine(logDirectory, "log.txt");
-    return new FileExceptionHandler(logFilePath);
-});
-builder.Services.AddSingleton<DataHandlerSQLite>(provider =>
-{
-    var configuration = provider.GetRequiredService<IConfiguration>();
-    var connectionString = configuration.GetConnectionString("SqliteConnection");
-    return new DataHandlerSQLite(connectionString);
-});
-builder.Services.AddSingleton<DataHandlerPostgress>(provider =>
-{
-    var configuration = provider.GetRequiredService<IConfiguration>();
-    var connectionString = configuration.GetConnectionString("PostgresConnection");
-    return new DataHandlerPostgress(connectionString);
-});
 builder.Services.AddSingleton<DataHandlerFactory>(provider =>
 {
     var configuration = provider.GetRequiredService<IConfiguration>();
     return new DataHandlerFactory(configuration);
+});
+builder.Services.AddSingleton<UserHandlerFactory>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    return new UserHandlerFactory(configuration);
 });
 builder.Services.AddCors(options =>
 {

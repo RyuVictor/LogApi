@@ -1,7 +1,8 @@
 ﻿using LogApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
-namespace LogApi.DataAccess
+namespace LogApi.DataAccess.Exceptions
 {
     public interface IDataHandler
     {
