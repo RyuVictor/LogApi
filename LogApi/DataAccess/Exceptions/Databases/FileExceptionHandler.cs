@@ -2,10 +2,10 @@
 using System.Globalization;
 using System.IO;
 using LogApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-
-namespace LogApi.DataAccess
+namespace LogApi.DataAccess.Exceptions.Databases
 {
     public class FileExceptionHandler : IDataHandler
     {

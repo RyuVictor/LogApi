@@ -1,4 +1,5 @@
-﻿using LogApi.DataAccess;
+﻿using LogApi.DataAccess.Exceptions;
+using LogApi.DataAccess.Exceptions.Databases;
 
 public class DataHandlerFactory
 {
@@ -28,7 +29,7 @@ public class DataHandlerFactory
                 return new FileExceptionHandler(logFilePath);
             case "Postgres":
                 var PostgresConnectionString = _configuration.GetConnectionString("PostgresConnection");
-                return new DataHandlerPostgress(PostgresConnectionString);
+                return new DataHandlerPostgres(PostgresConnectionString);
             case "Mongo":
                 var MongoConnectionString = _configuration.GetConnectionString("MongoConnection");
                 return new DataHandlerMongo(MongoConnectionString);

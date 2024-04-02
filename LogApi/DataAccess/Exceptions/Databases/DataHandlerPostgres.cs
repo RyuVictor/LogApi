@@ -1,15 +1,16 @@
 ﻿using LogApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace LogApi.DataAccess
+namespace LogApi.DataAccess.Exceptions.Databases
 {
-    public class DataHandlerPostgress : AesEncryption.EncrytionLogic,IDataHandler
+    public class DataHandlerPostgres : AesEncryption.EncrytionLogic, IDataHandler
     {
         private readonly string _connectionString;
-        public DataHandlerPostgress(string connectionString)
+        public DataHandlerPostgres(string connectionString)
         {
             _connectionString = connectionString;
         }

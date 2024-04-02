@@ -1,8 +1,9 @@
 ﻿using LogApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace LogApi.DataAccess
+namespace LogApi.DataAccess.Exceptions.Databases
 {
     public class DataHandlerMongo : IDataHandler
     {

@@ -1,8 +1,9 @@
 ﻿using LogApi.Models;
 using System.Text;
 using MySqlConnector;
+using Microsoft.AspNetCore.Mvc;
 
-namespace LogApi.DataAccess
+namespace LogApi.DataAccess.Exceptions.Databases
 {
     public class DataHandlerMysql : AesEncryption.EncrytionLogic, IDataHandler
     {

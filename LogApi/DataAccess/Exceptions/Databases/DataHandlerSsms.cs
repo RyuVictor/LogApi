@@ -1,9 +1,8 @@
 ﻿using LogApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 
-
-
-namespace LogApi.DataAccess
+namespace LogApi.DataAccess.Exceptions.Databases
 {
     public class DataHandlerSsms : IDataHandler
     {
@@ -88,5 +87,6 @@ namespace LogApi.DataAccess
         {
             throw new NotImplementedException();
         }
+
     }
 }
