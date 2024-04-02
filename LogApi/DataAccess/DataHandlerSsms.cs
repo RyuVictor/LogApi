@@ -1,18 +1,15 @@
 ﻿using LogApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 
 
 
 namespace LogApi.DataAccess
 {
-    public class DataHandler : IDataHandler
+    public class DataHandlerSsms : IDataHandler
     {
         private readonly string _connectionString;
 
-        public DataHandler(string connectionString)
+        public DataHandlerSsms(string connectionString)
         {
             _connectionString = connectionString;
         }
@@ -76,6 +73,20 @@ namespace LogApi.DataAccess
                     command.ExecuteNonQuery();
                 }
             }
+        }
+        public List<GroupCount> GroupExceptionsByProperty(string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<MyException> FilterExceptionsByProperty(List<MyException> exceptions, string propertyName, string propertyValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<MyException> GetRecentExceptions()
+        {
+            throw new NotImplementedException();
         }
     }
 }

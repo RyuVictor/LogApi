@@ -11,13 +11,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Register DataHandler class with connection string
+// Register DataHandlerSsms class with connection string
 var appBaseDirectory = AppContext.BaseDirectory;
-builder.Services.AddSingleton<DataHandler>(provider =>
+builder.Services.AddSingleton<DataHandlerSsms>(provider =>
 {
     var configuration = provider.GetRequiredService<IConfiguration>();
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
-    return new DataHandler(connectionString);
+    var connectionString = configuration.GetConnectionString("SsmsConnection");
+    return new DataHandlerSsms(connectionString);
 });
 builder.Services.AddSingleton<FileExceptionHandler>(provider =>
 {
@@ -32,10 +32,25 @@ builder.Services.AddSingleton<DataHandlerSQLite>(provider =>
     var connectionString = configuration.GetConnectionString("SqliteConnection");
     return new DataHandlerSQLite(connectionString);
 });
+builder.Services.AddSingleton<DataHandlerPostgress>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("PostgresConnection");
+    return new DataHandlerPostgress(connectionString);
+});
 builder.Services.AddSingleton<DataHandlerFactory>(provider =>
 {
     var configuration = provider.GetRequiredService<IConfiguration>();
     return new DataHandlerFactory(configuration);
+});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 var app = builder.Build();
 
@@ -45,6 +60,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 

@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Bajaj training\\ASP.NET\\LogApi\\LogApi\\LogApi.csproj": {}
+    "C:\\Users\\shantanudeshpande\\Desktop\\Projects\\LogApi-main\\LogApi-main\\LogApi\\LogApi.csproj": {}
   },
   "projects": {
-    "D:\\Bajaj training\\ASP.NET\\LogApi\\LogApi\\LogApi.csproj": {
+    "C:\\Users\\shantanudeshpande\\Desktop\\Projects\\LogApi-main\\LogApi-main\\LogApi\\LogApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Bajaj training\\ASP.NET\\LogApi\\LogApi\\LogApi.csproj",
+        "projectUniqueName": "C:\\Users\\shantanudeshpande\\Desktop\\Projects\\LogApi-main\\LogApi-main\\LogApi\\LogApi.csproj",
         "projectName": "LogApi",
-        "projectPath": "D:\\Bajaj training\\ASP.NET\\LogApi\\LogApi\\LogApi.csproj",
-        "packagesPath": "C:\\Users\\91973\\.nuget\\packages\\",
-        "outputPath": "D:\\Bajaj training\\ASP.NET\\LogApi\\LogApi\\obj\\",
+        "projectPath": "C:\\Users\\shantanudeshpande\\Desktop\\Projects\\LogApi-main\\LogApi-main\\LogApi\\LogApi.csproj",
+        "packagesPath": "C:\\Users\\shantanudeshpande\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\shantanudeshpande\\Desktop\\Projects\\LogApi-main\\LogApi-main\\LogApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\91973\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shantanudeshpande\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,13 +47,29 @@
               "target": "Package",
               "version": "[6.0.27, )"
             },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.24.0, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.6, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.118, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -76,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

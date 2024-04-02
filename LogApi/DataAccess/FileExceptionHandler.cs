@@ -36,7 +36,7 @@ namespace LogApi.DataAccess
             }
             catch (Exception ex)
             {
-                // Handle exceptions, e.g., log or throw
+                Console.WriteLine(ex);
             }
 
             return exceptions;
@@ -49,6 +49,20 @@ namespace LogApi.DataAccess
             {
                 writer.WriteLine(logEntry);
             }
+        }
+        public List<GroupCount> GroupExceptionsByProperty(string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<MyException> FilterExceptionsByProperty(List<MyException> exceptions,string propertyName, string propertyValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<MyException> GetRecentExceptions()
+        {
+            throw new NotImplementedException();
         }
     }
 }
