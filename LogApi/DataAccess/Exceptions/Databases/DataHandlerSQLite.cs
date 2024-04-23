@@ -141,7 +141,7 @@ namespace LogApi.DataAccess.Exceptions.Databases
             {
                 connection.Open();
 
-                using (var command = new SQLiteCommand("SELECT e.Id, e.StatusCode, e.Message, e.StackTrace, e.Source, e.Severity, a.ApplicationName FROM Exceptions e INNER JOIN Application a ON e.ApplicationId = a.ApplicationId", connection))
+                using (var command = new SQLiteCommand("SELECT e.Id, e.StatusCode, e.Message, e.StackTrace, e.Source, e.Severity,e.Timestamp, a.ApplicationName FROM Exceptions e INNER JOIN Application a ON e.ApplicationId = a.ApplicationId", connection))
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -155,8 +155,13 @@ namespace LogApi.DataAccess.Exceptions.Databases
                             Source = Convert.ToString(reader["Source"]),
                             Severity = Convert.ToString(reader["Severity"]),
                             ApplicationName = Convert.ToString(reader["ApplicationName"]),
-                            Timestamp = DateTime.Now,
                         };
+
+                        if (!reader.IsDBNull("Timestamp"))
+                        {
+                            exception.Timestamp = Convert.ToDateTime(reader["Timestamp"]);
+                        }
+
                         exceptions.Add(exception);
                     }
                 }

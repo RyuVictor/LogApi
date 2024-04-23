@@ -118,7 +118,7 @@ namespace LogApi.DataAccess.Exceptions.Databases
             {
                 connection.Open();
 
-                using (var command = new MySqlCommand("SELECT e.id, e.statuscode, e.message, e.stacktrace, e.source, e.severity, a.applicationName FROM Exceptions e INNER JOIN Application a ON e.applicationId = a.applicationId", connection))
+                using (var command = new MySqlCommand("SELECT e.id, e.statuscode, e.message, e.stacktrace, e.source, e.severity,e.timestamp, a.applicationName FROM Exceptions e INNER JOIN Application a ON e.applicationId = a.applicationId", connection))
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -132,7 +132,7 @@ namespace LogApi.DataAccess.Exceptions.Databases
                             Source = Convert.ToString(reader["source"]),
                             Severity = Convert.ToString(reader["severity"]),
                             ApplicationName = Convert.ToString(reader["applicationName"]),
-                            Timestamp = DateTime.Now,
+                            Timestamp = Convert.ToDateTime(reader["timestamp"])
                         };
                         exceptions.Add(exception);
                     }
@@ -141,6 +141,7 @@ namespace LogApi.DataAccess.Exceptions.Databases
 
             return exceptions;
         }
+
 
         public List<MyException> GetRecentExceptions()
         {
