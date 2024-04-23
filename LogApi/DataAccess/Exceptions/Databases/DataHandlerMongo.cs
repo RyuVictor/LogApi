@@ -29,7 +29,8 @@ namespace LogApi.DataAccess.Exceptions.Databases
                 { "stackTrace", exception.StackTrace },
                 { "source", exception.Source },
                 { "severity", exception.Severity },
-                { "applicationName", exception.ApplicationName }
+                { "applicationName", exception.ApplicationName },
+                { "timestamp", exception.Timestamp }
             };
 
             _exceptionsCollection.InsertOne(exceptionDoc);
@@ -92,7 +93,8 @@ namespace LogApi.DataAccess.Exceptions.Databases
                     StackTrace = doc.GetValue("stackTrace").AsString,
                     Source = doc.GetValue("source").AsString,
                     Severity = doc.GetValue("severity").AsString,
-                    ApplicationName = doc.GetValue("applicationName").AsString
+                    ApplicationName = doc.GetValue("applicationName").AsString,
+                    Timestamp = doc.GetValue("timestamp").ToUniversalTime()
                 };
                 exceptions.Add(exception);
             }

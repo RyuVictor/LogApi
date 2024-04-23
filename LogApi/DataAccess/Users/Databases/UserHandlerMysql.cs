@@ -40,6 +40,16 @@ namespace LogApi.DataAccess.Users.Databases
                             existingUserId = insertUserCommand.ExecuteScalar();
                         }
                     }
+                    else
+                    {
+                        // User exists, update the Timestamp column
+                        using (var updateUserCommand = new MySqlCommand("UPDATE LoggedInusers SET Timestamp = @Timestamp WHERE ID = @ID", connection))
+                        {
+                            updateUserCommand.Parameters.AddWithValue("@ID", existingUserId);
+                            updateUserCommand.Parameters.AddWithValue("@Timestamp", DateTime.UtcNow);
+                            updateUserCommand.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
         }
