@@ -20,8 +20,15 @@ namespace LogApi.Controllers
         [HttpPost]
         public IActionResult AddException(MyException exception)
         {
-            _dataHandler.AddException(exception);
-            return Ok();
+            try
+            {
+                _dataHandler.AddException(exception);
+                return Ok("Data Added Successfully");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { message = $"An error occurred while processing your request. {e}" });
+            }
         }
 
         // GET api/log

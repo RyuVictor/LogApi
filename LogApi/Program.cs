@@ -1,5 +1,6 @@
 using LogApi.DataAccess.Exceptions.Databases;
 using LogApi.DataAccess.Users;
+using LogApi.Middleware;
 using Microsoft.Extensions.Configuration;
 
 
@@ -45,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors();
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseAuthorization();
 
